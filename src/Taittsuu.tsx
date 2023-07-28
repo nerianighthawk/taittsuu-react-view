@@ -45,63 +45,9 @@ export const Taittsuu = () => {
   useEffect(() => {
     (async () => {
       const res = await axios.get<TaiitsusResponse>('/taittsuu/api/users/yataka_neria/taiitsus')
-      console.log(res)
       setTaiitsus(res.data.data)
     })()
   }, [])
-
-  const data: Taiitsu[] = [
-    {
-      "id": 1629911,
-      "user_id": 56221,
-      "content": "アーカイブを見る場合はネタバレ注意\n\nhttps://www.youtube.com/live/eYDIO7fBrzQ?feature=share",
-      "post_type": 10,
-      "is_defensive": 0,
-      "is_sensitive": 0,
-      "scope": 10,
-      "exist_media": 0,
-      "exist_url": 0,
-      "exist_hashtag": 0,
-      "target_rt_post_id": null,
-      "created_at": "2023-07-24T06:34:42.000000Z",
-      "user_name": "夜鷹ねりあ",
-      "user_screenname": "yataka_neria",
-      "is_verified": 1,
-      "is_locked": 0,
-      "is_rt": false,
-      "is_deleted": false,
-      "like_count": 1,
-      "rt_count": 0,
-      "is_liked": false,
-      "is_retaiitsued": false,
-      "is_ignored": false
-    },
-    {
-      "id": 1629911,
-      "user_id": 56221,
-      "content": "アーカイブを見る場合はネタバレ注意\n\nhttps://www.youtube.com/live/eYDIO7fBrzQ?feature=share",
-      "post_type": 10,
-      "is_defensive": 0,
-      "is_sensitive": 0,
-      "scope": 10,
-      "exist_media": 0,
-      "exist_url": 0,
-      "exist_hashtag": 0,
-      "target_rt_post_id": null,
-      "created_at": "2023-07-24T06:34:42.000000Z",
-      "user_name": "夜鷹ねりあ",
-      "user_screenname": "yataka_neria",
-      "is_verified": 1,
-      "is_locked": 0,
-      "is_rt": false,
-      "is_deleted": false,
-      "like_count": 1,
-      "rt_count": 0,
-      "is_liked": false,
-      "is_retaiitsued": false,
-      "is_ignored": false
-    }
-  ];
 
   const generateHTML = (taiitsu: Taiitsu) => (
     <div className="post-wrap" id="24gq782igvg">
@@ -135,5 +81,5 @@ export const Taittsuu = () => {
     </div>
   );
   
-  return taiitsus.map(generateHTML);
+  return (<>{taiitsus.map(generateHTML)}</>);
 };
