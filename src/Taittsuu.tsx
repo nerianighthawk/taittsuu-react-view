@@ -3,6 +3,12 @@ import './taittsuu.css';
 import axios from 'axios';
 import dayjs from 'dayjs';
 
+type TaittsuuProps = {
+  url: string,
+  width: string,
+  height: string
+}
+
 type Taiitsu = {
   id: number,
   user_id: number,
@@ -40,17 +46,17 @@ const convertToDisplayDate = (datetime: string) => (
 /**
  * Primary UI component for user interaction
  */
-export const Taittsuu = () => {
+export const Taittsuu = (props: TaittsuuProps) => {
   const [taiitsus, setTaiitsus] = useState<Taiitsu[]>([])
   useEffect(() => {
     (async () => {
-      const res = await axios.get<TaiitsusResponse>('/taittsuu/api/users/yataka_neria/taiitsus')
+      const res = await axios.get<TaiitsusResponse>(`/taittsuu/api/${props.url}`)
       setTaiitsus(res.data.data)
     })()
   }, [])
 
   const generateHTML = (taiitsu: Taiitsu) => (
-    <div className="post-wrap" id="24gq782igvg">
+    <div className="post-wrap" style={{width: props.width, height: props.height}}>
         <div className="post-main">
             <a className="post-link post-link-user" href="/users/che_to_n">
                 <div className="post-user-name">
